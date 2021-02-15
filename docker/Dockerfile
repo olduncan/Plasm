@@ -5,7 +5,8 @@ ARG PROFILE=release
 WORKDIR /plasm
 
 COPY . /plasm
-
+RUN rustup toolchain install nightly-2020-08-23 && rustup default nightly-2020-08-23
+RUN rustup target add wasm32-unknown-unknown
 RUN cargo build --$PROFILE
 
 # ===== SECOND STAGE ======
